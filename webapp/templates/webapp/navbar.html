@@ -1,0 +1,94 @@
+<nav class="navbar navbar-expand-lg navbar-dark justify-content-center custom-navbar">
+  <a class="navbar-brand main-heading" href="{% url '' %}">
+    &nbsp; TusharX
+  </a>
+
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNavDropdown"
+    aria-controls="navbarNavDropdown"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
+    <ul class="navbar-nav mr-auto">
+      &nbsp; &nbsp; &nbsp;
+
+      {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'dashboard' %}">Dashboard &nbsp; <i class="fa fa-home" aria-hidden="true"></i> </a>
+        </li>
+
+        &nbsp; &nbsp; &nbsp;
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'user-logout' %}">Sign out &nbsp; <i class="fa fa-sign-out" aria-hidden="true"></i> </a>
+        </li>
+      {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'register' %}"> Register </a>
+        </li>
+
+        &nbsp; &nbsp; &nbsp;
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'my-login' %}">Login</a>
+        </li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
+
+<style>
+  /* Navbar Styling */
+  .custom-navbar {
+    background-color: #08323b; /* Dark Brown Color */
+    box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 12px 20px;
+    font-size: 1.2em;
+  }
+
+  /* Brand Styling */
+  .custom-navbar .navbar-brand.main-heading {
+    font-weight: bold;
+    font-family: 'Georgia', serif;
+    font-style: oblique;
+    font-size: 1.2em;
+    color: #fff !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-right: 20px;
+  }
+
+  /* Nav Links */
+  .custom-navbar .navbar-nav .nav-link {
+    color: #fff !important;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    padding: 8px 15px;
+    font-weight: 500;
+  }
+
+  /* Hover Effect on Links */
+  .custom-navbar .navbar-nav .nav-link:hover {
+    color: #ffc907 !important;
+    background-color: rgba(252, 250, 243, 0.15);
+    border-radius: 5px;
+  }
+
+  /* Icon Styling */
+  .custom-navbar .nav-link i {
+    font-size: 1.1em;
+    margin-left: 5px;
+  }
+
+  /* Toggler Styling */
+  .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+</style>
+
