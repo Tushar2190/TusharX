@@ -1,0 +1,121 @@
+{% extends 'webapp/base.html' %}
+
+{% block content %}
+<style>
+    /* Background Gradient */
+    body {
+        background: linear-gradient(to right, #e0f7fa, #c3cfe2);
+    }
+
+    /* Card Styling */
+    .card {
+        animation: fadeInUp 1s ease;
+        box-shadow: 20px 40px 5px rgba(0, 0, 0, 0.15);
+        border-radius: 15px;
+    }
+
+    /* Card Header */
+    .card-header {
+        background-color: #0b2f55;
+        color: white;
+        text-align: center;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        animation: fadeInDown 1s ease;
+    }
+
+    /* Profile Icon Animation */
+    .fa-user-circle-o {
+        animation: bounceIn 1.2s ease;
+    }
+
+    /* Card Body Text Styling */
+    .card-body p {
+        font-size: 1.1rem;
+        color: #333;
+        animation: fadeIn 1s ease;
+    }
+
+    /* Button Styling */
+    .btn {
+        transition: all 0.3s ease;
+    }
+    .btn-outline-secondary:hover {
+        background-color: #048995;
+        color: white;
+    }
+    .btn-outline-info:hover {
+        background-color: #027083;
+        color: white;
+    }
+    .btn-danger:hover {
+        background-color: #c82333;
+    }
+
+    /* Card Footer Button Hover Effect */
+    .card-footer .btn:hover {
+        transform: scale(1.05);
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes bounceIn {
+        0% { transform: scale(0.3); }
+        50% { transform: scale(1.1); }
+        70% { transform: scale(0.9); }
+        100% { transform: scale(1); }
+    }
+</style>
+
+<div class="container my-5">
+    <div class="card shadow-lg border-0 rounded">
+        <div class="card-header">
+            <i class="fa fa-user-circle-o fa-3x" aria-hidden="true"></i>
+            <h3 class="my-2">{{ record.first_name|upper }} {{ record.last_name|upper }}</h3>
+            <hr>
+            <small>ID: {{ record.id }}</small>
+        </div>
+
+        <div class="card-body p-4">
+            <hr class="my-3">
+            <p><strong>Email:</strong> <span class="text-secondary">{{ record.email }}</span></p>
+            <p><strong>Address:</strong> <span class="text-secondary">{{ record.address }}</span></p>
+            <p><strong>City:</strong> <span class="text-secondary">{{ record.city }}</span></p>
+            <p><strong>State:</strong> <span class="text-secondary">{{ record.state }}</span></p>
+            <p><strong>Country:</strong> <span class="text-secondary">{{ record.country }}</span></p>
+            <p><strong>Creation Date:</strong> <span class="text-secondary">{{ record.creation_date }}</span></p>
+            <hr class="my-4">
+        </div>
+
+        <div class="card-footer text-center">
+            <a href="{% url 'dashboard' %}" class="btn btn-outline-secondary mx-2">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i> Return
+            </a>
+
+            <a href="{% url 'update-record' record.id %}" class="btn btn-outline-info rounded-pill shadow-lg mx-2">
+                <i class="fa fa-pencil" aria-hidden="true"></i> Update Record
+            </a>
+
+            <a href="{% url 'delete-record' record.id %}" class="btn btn-danger text-white mx-2 px-3 py-2 rounded-pill shadow-lg">
+                <i class="fa fa-trash" aria-hidden="true"></i> Delete
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
